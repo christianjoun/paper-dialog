@@ -108,6 +108,14 @@ element.
       } else {
         this._finishRenderClosed();
       }
+    },
+
+    // Temporary patch to fix issue -> this is in custom element
+    // https://github.com/PolymerElements/polymer-starter-kit/issues/154
+    attached: function() {
+      if (this.keepWithParent !== true) {
+        document.querySelector('body').appendChild(this);
+      }
     }
 
   });
